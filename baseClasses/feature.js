@@ -22,6 +22,9 @@ class Feature {
   GetRole(name) {
     return this.GetGuild().roles.find(r=>r.name == name);
   }
+  GetRole(name) {
+    return this.GetGuild().members.find(r=>r.name == name);
+  }
 }
 
 module.exports = Feature;
