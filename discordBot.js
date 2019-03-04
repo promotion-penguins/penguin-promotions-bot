@@ -1,3 +1,4 @@
+require('./config/global.js')
 const Commando = require("discord.js-commando");
 const FeatureLoader = require("./features/FeatureLoader.js");
 const path = require('path');
@@ -31,7 +32,7 @@ client.on('ready', () => {
    * ################################# */
   var presence = require('./config/config.js').presence;
   if (presence) {
-    client.user.setPresence(require('./config/config.js').presence);
+    client.user.setPresence(global.presence);
   }
   console.log(`Logged in as ${client.user.tag}!`);
   global.featureLoader.Intitialise();
