@@ -30,9 +30,9 @@ client.on('ready', () => {
   /* #################################
    *  PRESENCE SETUP MOVED TO TOKEN.JS
    * ################################# */
-  var presence = require('./config/config.js').presence;
+  var presence = global.presence;
   if (presence) {
-    client.user.setPresence(global.presence);
+    client.user.setPresence(presence);
   }
   console.log(`Logged in as ${client.user.tag}!`);
   global.featureLoader.Intitialise();
