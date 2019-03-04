@@ -19,12 +19,15 @@ class Feature {
     return this.GetGuild().channels.get(id);
   }
 
+  GetUser(id) {
+    return this.GetGuild().members.get(id);
+  }
+
   GetRole(name) {
     return this.GetGuild().roles.find(r=>r.name == name);
   }
-  GetRole(name) {
-    return this.GetGuild().members.find(r=>r.name == name);
-  }
+
+
 }
 
 module.exports = Feature;

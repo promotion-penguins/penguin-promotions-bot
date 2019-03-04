@@ -6,7 +6,18 @@ class StaffChat extends Feature {
         super(client);
     }
     Intitialise() {
-
+      var alertChannel = this.GetChannel(global.alertChannelID);
+      alertChannel.send({
+          embed: {
+              title: "",
+              description: "Conversations Reset",
+              timestamp: new Date(),
+              footer: {
+                  icon_url: this.client.user.avatarURL,
+                  text: "PromotionPenguins"
+              }
+          }
+      });
     }
 
     Request(message, text) {
@@ -36,7 +47,7 @@ class StaffChat extends Feature {
       return {
           embed: {
               author: {
-                  name: message.author.username,
+                  name: "[" + this.GetUser(message.author.id).colorRole.name + "] " + message.author.username,
                   icon_url: message.author.avatarURL
               },
               description: message.content,
@@ -66,16 +77,22 @@ class StaffChat extends Feature {
 
     Message(message) {
         if (message.channel.type == "dm") {
-          if (global.staffConversations.map(x=>x.user).includes(message.author.id)) {
-            GetConversationByStaffId(message.author.id,function (conv) {
-              
+          if (global.staffConversations.map(x=>x.staff).includes(message.author.id)) {
+
+            this.GetConversationByStaffId(message.author.id,(conv) =>{
+              var user = this.GetUser(conv.user);
+              user.send(this.StaffDM(message));
             });
+            return;
           }
 
           if (global.staffConversations.map(x=>x.user).includes(message.author.id)) {
-            GetConversationByUserId(message.author.id,function (conv) {
+            this.GetConversationByUserId(message.author.id, (conv) => {
+              var staff = this.GetUser(conv.staff);
+              staff.send(this.StaffDM(message));
 
             });
+            return;
           }
 
           if (global.usersWaiting.includes(message.author.id)) {
