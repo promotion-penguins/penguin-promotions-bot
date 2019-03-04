@@ -33,8 +33,8 @@ class AnswerCommand extends Command {
       });
       var conversation = {user:user.id,staff:staff.id};
       global.staffConversations.push(conversation);
-      staff.send("staff test");
-      user.send("user test");
+      staff.send("Connected to user. `` command to leave comming soon.");
+      user.send(`Hello! My name is ${staff} How may I help you?`);
 
     }
 }

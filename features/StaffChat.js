@@ -32,7 +32,7 @@ class StaffChat extends Feature {
               description: message.content,
               fields: [{
                   name: text,
-                  value: message.author + " would like to speak to someone do `!pp answer @" + message.author.username + "` to answer."
+                  value: message.author + " would like to speak to someone do `" + this.client.commandPrefix + " answer @" + message.author.username + "` to answer."
               }],
               timestamp: new Date(),
               footer: {
