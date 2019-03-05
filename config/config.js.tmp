@@ -1,0 +1,18 @@
+module.exports = {
+  ownerId: "",
+  token: "",
+  prefix: '!',
+  presence: {
+    game: {
+      //GAME NAME
+      name: '',
+      //TWITCH URL
+      url: "",
+      //ACTIVITY TYPE: "PLAYING", "STREAMING", "LISTENING", "WATCHING"
+      type: ""
+    },
+    //STATUS: 'online','idle','invisible','dnd'
+    status: 'online',
+    afk: false
+  }
+};

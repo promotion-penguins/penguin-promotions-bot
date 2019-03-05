@@ -7,17 +7,23 @@ class StaffChat extends Feature {
     }
     Intitialise() {
       var alertChannel = this.GetChannel(global.alertChannelID);
-      alertChannel.send({
-          embed: {
-              title: "",
-              description: "Conversations Reset",
-              timestamp: new Date(),
-              footer: {
-                  icon_url: this.client.user.avatarURL,
-                  text: "PromotionPenguins"
-              }
-          }
-      });
+      if (process.env.NODE_ENV == "production") {
+        alertChannel.send({
+            embed: {
+                title: "",
+                description: "Conversations Reset",
+                timestamp: new Date(),
+                footer: {
+                    icon_url: this.client.user.avatarURL,
+                    text: "PromotionPenguins"
+                }
+            }
+        }).then(msg => {
+        msg.delete(10000)
+        });
+      }
+      console.log("Conversations Reset")
+
     }
 
     Request(message, text) {

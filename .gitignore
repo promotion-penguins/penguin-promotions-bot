@@ -60,3 +60,4 @@ typings/
 
 # secret config
 /config/config.js
+/config/donotopen.js

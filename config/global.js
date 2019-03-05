@@ -1,3 +1,4 @@
+const config = require('./config');
 global = {
   serverID:"516387175299022868",
   alertChannelID: "551877337247907859",
@@ -6,14 +7,14 @@ global = {
   presence: {
     game: {
       //GAME NAME
-      name: 'PM to talk with a staff',
+      name: process.env.DISCORD_PRES_NAME || config.presence.game.name,
       //TWITCH URL
-      url: "http://example.com",
+      url:  process.env.DISCORD_PRES_URL || config.presence.game.url,
       //ACTIVITY TYPE: "PLAYING", "STREAMING", "LISTENING", "WATCHING"
-      type: "PLAYING"
+      type:  process.env.DISCORD_PRES_TYPE || config.presence.game.type
     },
     //STATUS: 'online','idle','invisible','dnd'
-    status: 'online',
+    status:  process.env.DISCORD_PRES_STATUS || config.presence.status,
     afk: false
   }
 }
